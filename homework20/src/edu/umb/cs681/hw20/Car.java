@@ -1,28 +1,21 @@
-package edu.umb.cs681.hw19;
+package edu.umb.cs681.hw20;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-	
-	private int colorCode;
-	
+
 	private String model, make;
 	private int mileage, year;
 	private float price;
 	private int dominationCount;
 
-	public Car(int colorCode, String make, String model, int mileage, int year, float price) {
-		this.colorCode = colorCode;
+	public Car(String make, String model, int mileage, int year, float price) {
 		this.make = make;
 		this.model = model;
 		this.mileage = mileage;
 		this.year = year;
 		this.price = price;
-	}
-	
-	public int getColorCode() {
-		return this.colorCode;
 	}
 
 	public String getModel() {
@@ -63,23 +56,14 @@ public class Car {
 		
 		List<Car> cars = new ArrayList<>();
 		
-		cars.add(new Car(1111, "Porche", "LUX7", 700, 2019, 7000000));
-		cars.add(new Car(2222, "Bentley", "GT", 400, 2018, 120000));
-		cars.add(new Car(3333, "Audi", "Q7", 300, 2017, 300000));
-		cars.add(new Car(4444, "BMW", "S3", 200, 2019, 180000));
-		cars.add(new Car(5555, "Ferrari", "SL550", 100, 2020, 450000));
-		cars.add(new Car(6666, "Toyota", "RAV4", 20, 2018, 100000));
+		cars.add(new Car("Porche", "LUX7", 700, 2019, 7000000));
+		cars.add(new Car("Bentley", "GT", 400, 2018, 120000));
+		cars.add(new Car("Audi", "Q7", 300, 2017, 300000));
+		cars.add(new Car("BMW", "S3", 200, 2019, 180000));
+		cars.add(new Car("Ferrari", "SL550", 100, 2020, 450000));
+		cars.add(new Car("Toyota", "RAV4", 20, 2018, 100000));
 
 		cars.forEach((Car car) -> car.setDominationCount(cars));
-		
-		Integer colorcode = cars
-							 .stream()
-			                 .parallel()
-			                 .map((Car car) -> car.getColorCode())
-			                 .reduce(0, (result, carColorCode) -> result += carColorCode,
-			                         (finalResult, intermediateResult) -> finalResult + intermediateResult);
-
-        System.out.println("Sum Of Car Color Code\t: " + colorcode);
 
 		Integer Mileage = cars
 							 .stream()
